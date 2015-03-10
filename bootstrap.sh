@@ -45,6 +45,7 @@ mysqladmin -u root password root
 cp /etc/my.cnf /etc/my.cnf.org
 cp /vagrant/mysql/my.cnf /etc/my.cnf
 
+service mysqld restart
 echo "-------------------------------"
 echo "install php-fpm"
 echo "-------------------------------"
@@ -94,5 +95,5 @@ echo "-------------------------------"
 echo "service restart"
 echo "-------------------------------"
 service php-fpm restart
-service mysql restart
+service mysqld restart
 service nginx reload
