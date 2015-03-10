@@ -45,8 +45,6 @@ mysqladmin -u root password root
 cp /etc/my.cnf /etc/my.cnf.org
 cp /vagrant/mysql/my.cnf /etc/my.cnf
 
-
-
 echo "-------------------------------"
 echo "install php-fpm"
 echo "-------------------------------"
@@ -73,8 +71,13 @@ echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
 git clone git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
+git clone git://github.com/cakephp/debug_kit.git /vagrant/www/cake-app/Plugins/DebugKit
+
 mysql -u root -proot -e "CREATE DATABASE cake_app;"
-cp -rf /vagrant/cake/*.php /vagrant/www/cake-app/app/Config/
+
+cp -rf /vagrant/cake/Config/*.php /vagrant/www/cake-app/app/Config/
+cp -rf /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/app/Controller/
+cp -rf /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/app/View/Layouts/
 
 echo "-------------------------------"
 echo "install nginx"
