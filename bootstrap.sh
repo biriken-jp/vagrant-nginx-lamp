@@ -80,6 +80,8 @@ cp -rf /vagrant/cake/Config/*.php /vagrant/www/cake-app/app/Config/
 cp -rf /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/app/Controller/
 cp -rf /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/app/View/Layouts/
 
+chmod 777 /vagrant/www/cake-app/app/tmp/
+
 echo "-------------------------------"
 echo "install nginx"
 echo "-------------------------------"
