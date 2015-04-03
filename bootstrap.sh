@@ -71,7 +71,7 @@ mv composer.phar /usr/local/bin/composer
 echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
-git clone git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
+git clone -b 2.6 git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
 git clone git://github.com/cakephp/debug_kit.git /vagrant/www/cake-app/Plugins/DebugKit
 
 mysql -u root -proot -e "CREATE DATABASE cake_app;"
