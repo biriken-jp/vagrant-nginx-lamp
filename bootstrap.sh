@@ -72,7 +72,7 @@ echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
 git clone -b 2.6 git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
-cd /vagrant/www/cake-app/app
+cd /vagrant/www/cake-app
 
 composer install
 
