@@ -71,7 +71,7 @@ mv composer.phar /usr/local/bin/composer
 echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
-git clone -b 2.6 git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
+git clone -b 2.6 --single-branch git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
 cd /vagrant/www/cake-app
 
 php /usr/local/bin/composer install
@@ -92,8 +92,8 @@ echo "-------------------------------"
 sudo yum -y install nginx
 
 cp -rf /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.org
-cp -rf /vagrant/nginx/*.conf /etc/nginx/conf.d/
-
+cp -rf /vagrant/nginx/nginx-*.conf /etc/nginx/conf.d/
+cp -rf /vagrant/nginx/nginx.conf /etc/nginx/
 service nginx start
 chkconfig nginx on
 
