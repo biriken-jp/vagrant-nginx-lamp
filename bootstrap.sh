@@ -71,7 +71,7 @@ mv composer.phar /usr/local/bin/composer
 echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
-git clone -b 2.6 --single-branch git://github.com/cakephp/cakephp.git /vagrant/www/cake-app
+git clone git://github.com/cakephp/cakephp.git -b 2.6 --depth=1 --no-hardlinks --no-checkout /vagrant/www/cake-app
 cd /vagrant/www/cake-app
 
 php /usr/local/bin/composer install
