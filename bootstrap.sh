@@ -79,9 +79,16 @@ php /usr/local/bin/composer install
 mkdir -p /vagrant/www/lib && cd /vagrant/www/lib && ln -s /vagrant/www/vendor/cakephp/cakephp/lib/Cake .
 cd /vagrant/www
 yes | php /vagrant/www/lib/Cake/Console/cake.php bake project cake-app
-cp -rf  /vagrant/www/Plugin/* /vagrant/www/cake-app/Plugin
 
-cp -rf /vagrant/www/app/Plugin/BoostCake/View/Layouts/bootstrap3.ctp /vagrant/www/cake-app/View/Layouts/default.ctp
+cp -rf /vagrant/www/app/Plugin/* /vagrant/www/cake-app/Plugin
+
+echo "----------Boostrap 3-----------"
+cp -rf /vagrant/www/vendor/components/jquery/jquery.min.js /vagrant/www/cake-app/webroot/js/
+cp -rf /vagrant/www/vendor/components/bootstrap/css/bootstrap*.min.css /vagrant/www/cake-app/webroot/css
+cp -rf /vagrant/www/vendor/components/bootstrap/js/* /vagrant/www/cake-app/webroot/js
+cp -rfa /vagrant/www/vendor/components/bootstrap/fonts /vagrant/www/cake-app/webroot/fonts
+
+touch /vagrant/www/cake-app/webroot/css/style.css
 
 cp -rf /vagrant/cake/Config/*.php /vagrant/www/cake-app/Config/
 cp -rf /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/Controller/
