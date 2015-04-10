@@ -71,20 +71,23 @@ mv composer.phar /usr/local/bin/composer
 echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
-git clone git://github.com/cakephp/cakephp.git -b 2.6 --depth=1 /vagrant/www/cake-app
-cd /vagrant/www/cake-app
-
-php /usr/local/bin/composer install
-
-cd
-
 mysql -u root -proot -e "CREATE DATABASE cake_app;"
 
-cp -rf /vagrant/cake/Config/*.php /vagrant/www/cake-app/app/Config/
-cp -rf /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/app/Controller/
-cp -rf /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/app/View/Layouts/
+cp -rf /vagrant/cake/composer.json /vagrant/www/
+cd /vagrant/www
+php /usr/local/bin/composer install
+mkdir -p /vagrant/www/lib && cd /vagrant/www/lib && ln -s /vagrant/www/vendor/cakephp/cakephp/lib/Cake .
+cd /vagrant/www
+yes | php /vagrant/www/lib/Cake/Console/cake.php bake project cake-app
+cp -rf  /vagrant/www/Plugin/* /vagrant/www/cake-app/Plugin
 
-chmod 777 /vagrant/www/cake-app/app/tmp/
+cp -rf /vagrant/www/app/Plugin/BoostCake/View/Layouts/bootstrap3.ctp /vagrant/www/cake-app/View/Layouts/default.ctp
+
+cp -rf /vagrant/cake/Config/*.php /vagrant/www/cake-app/Config/
+cp -rf /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/Controller/
+cp -rf /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/View/Layouts/
+
+chmod 777 /vagrant/www/cake-app/tmp/
 
 echo "-------------------------------"
 echo "install nginx"

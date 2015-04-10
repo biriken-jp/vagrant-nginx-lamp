@@ -1,3 +1,6 @@
+
 /.vagrant/
-/www/cake-app/
 /.idea/
+
+/www/*
+!/www/public/

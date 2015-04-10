@@ -122,4 +122,4 @@ App::build(array(
     'Plugin' => array(ROOT . '/Plugin/')
 ));
 
-CakePlugin::load('DebugKit');
+CakePlugin::loadALL();
