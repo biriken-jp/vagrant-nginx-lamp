@@ -1,5 +1,5 @@
 <?php
-require APP . '../Vendor/autoload.php';
+require APP.'../Vendor/autoload.php';
 spl_autoload_unregister(array('App', 'load'));
 spl_autoload_register(array('App', 'load'), true, true);
 
@@ -89,37 +89,48 @@ Cache::config('default', array('engine' => 'File'));
  * Feel free to remove or add filters as you see fit for your application. A few examples:
  *
  * Configure::write('Dispatcher.filters', array(
- *		'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
- *		'MyCacheFilter' => array('prefix' => 'my_cache_'), //  will use MyCacheFilter class from the Routing/Filter package in your app with settings array.
- *		'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
- *		array('callable' => $aFunction, 'on' => 'before', 'priority' => 9), // A valid PHP callback type to be called on beforeDispatch
- *		array('callable' => $anotherMethod, 'on' => 'after'), // A valid PHP callback type to be called on afterDispatch
+ *        'MyCacheFilter', //  will use MyCacheFilter class from the Routing/Filter package in your app.
+ *        'MyCacheFilter' => array('prefix' => 'my_cache_'), //  will use MyCacheFilter class from the Routing/Filter package in your app with settings array.
+ *        'MyPlugin.MyFilter', // will use MyFilter class from the Routing/Filter package in MyPlugin plugin.
+ *        array('callable' => $aFunction, 'on' => 'before', 'priority' => 9), // A valid PHP callback type to be called on beforeDispatch
+ *        array('callable' => $anotherMethod, 'on' => 'after'), // A valid PHP callback type to be called on afterDispatch
  *
  * ));
  */
-Configure::write('Dispatcher.filters', array(
-	'AssetDispatcher',
-	'CacheDispatcher'
-));
+Configure::write(
+    'Dispatcher.filters',
+    array(
+        'AssetDispatcher',
+        'CacheDispatcher'
+    )
+);
 
 /**
  * Configures default file logging options
  */
 App::uses('CakeLog', 'Log');
-CakeLog::config('debug', array(
-	'engine' => 'File',
-	'types' => array('notice', 'info', 'debug'),
-	'file' => 'debug',
-));
-CakeLog::config('error', array(
-	'engine' => 'File',
-	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
-	'file' => 'error',
-));
+CakeLog::config(
+    'debug',
+    array(
+        'engine' => 'File',
+        'types'  => array('notice', 'info', 'debug'),
+        'file'   => 'debug',
+    )
+);
+CakeLog::config(
+    'error',
+    array(
+        'engine' => 'File',
+        'types'  => array('warning', 'error', 'critical', 'alert', 'emergency'),
+        'file'   => 'error',
+    )
+);
 
-App::build(array(
-    'Vendor' => array(ROOT . '/Vendor/'),
-    'Plugin' => array(ROOT . '/Plugin/')
-));
+App::build(
+    array(
+        'Vendor' => array(ROOT.'/Vendor/'),
+        'Plugin' => array(ROOT.'/Plugin/')
+    )
+);
 
 CakePlugin::loadAll();
