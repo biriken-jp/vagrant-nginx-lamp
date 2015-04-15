@@ -14,7 +14,8 @@ echo "-------------------------------"
 echo "chenge login shel"
 echo "-------------------------------"
 chsh -s /bin/zsh vagrant
-cp /vagrant/zsh/.zshrc /home/vagrant/.zshrc
+git clone https://gist.github.com/8c8eeb4885fa3b6b2d94.git ./zsh
+cp -rf /vagrant/zsh/zshrc_useful.sh ~/.zshrc
 
 echo "-------------------------------"
 echo "install repository"
@@ -84,6 +85,7 @@ cd /vagrant/www
 yes | php /vagrant/www/lib/Cake/Console/cake.php bake project cake-app
 
 cp -rf /vagrant/www/app/Plugin/* /vagrant/www/cake-app/Plugin
+cp -rf /vagrant/cake/Locale/jpn /vagrant/www/cake-app/Locale
 
 echo "----------Boostrap 3-----------"
 cp -rf /vagrant/www/vendor/components/jquery/jquery.min.js /vagrant/www/cake-app/webroot/js/
