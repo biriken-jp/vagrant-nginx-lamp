@@ -72,9 +72,7 @@ mv composer.phar /usr/local/bin/composer
 echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
-mysql -u
-root -proot
--e "CREATE DATABASE test_cake_app;"
+mysql -u root -proot -e "CREATE DATABASE test_cake_app;"
 mysql -u root -proot -e "CREATE DATABASE cake_app;"
 
 cp -rf /vagrant/cake/composer.json /vagrant/www/
