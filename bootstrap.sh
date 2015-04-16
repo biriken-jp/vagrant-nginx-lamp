@@ -14,7 +14,7 @@ echo "-------------------------------"
 echo "chenge login shel"
 echo "-------------------------------"
 chsh -s /bin/zsh vagrant
-git clone https://gist.github.com/8c8eeb4885fa3b6b2d94.git ./zsh
+git clone https://gist.github.com/8c8eeb4885fa3b6b2d94.git /vagrant/zsh
 cp -rf /vagrant/zsh/zshrc_useful.sh ~/.zshrc
 
 echo "-------------------------------"
