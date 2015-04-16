@@ -72,7 +72,6 @@ mv composer.phar /usr/local/bin/composer
 echo "-------------------------------"
 echo "install cakephp"
 echo "-------------------------------"
-mysql -u root -proot -e "CREATE DATABASE test_cake_app;"
 mysql -u root -proot -e "CREATE DATABASE cake_app;"
 
 cp -rf /vagrant/cake/composer.json /vagrant/www/
@@ -83,7 +82,6 @@ cd /vagrant/www
 yes | php /vagrant/www/lib/Cake/Console/cake.php bake project cake-app
 
 cp -rf /vagrant/www/app/Plugin/* /vagrant/www/cake-app/Plugin
-cp -rf /vagrant/cake/Locale/jpn /vagrant/www/cake-app/Locale
 
 echo "----------Boostrap 3-----------"
 cp -rf /vagrant/www/vendor/components/jquery/jquery.min.js /vagrant/www/cake-app/webroot/js/
