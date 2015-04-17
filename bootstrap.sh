@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 echo "-------------------------------"
+echo "wwwフォルダを作成"
+echo "-------------------------------"
+mkdir -p /vagrant/www/
+
+echo "-------------------------------"
 echo "iptables stop"
 echo "-------------------------------"
 chkconfig iptables off
