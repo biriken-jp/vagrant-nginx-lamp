@@ -15,7 +15,7 @@ echo "chenge login shel"
 echo "-------------------------------"
 chsh -s /bin/zsh vagrant
 git clone https://gist.github.com/8c8eeb4885fa3b6b2d94.git /vagrant/zsh
-cp -rf /vagrant/zsh/zshrc_useful.sh /home/vagrant/.zshrc
+cp -rfa /vagrant/zsh/zshrc_useful.sh /home/vagrant/.zshrc
 
 echo "-------------------------------"
 echo "install repository"
@@ -74,37 +74,46 @@ echo "install cakephp"
 echo "-------------------------------"
 mysql -u root -proot -e "CREATE DATABASE cake_app;"
 
-cp -rf /vagrant/cake/composer.json /vagrant/www/
+cp -rfa /vagrant/cake/composer.json /vagrant/www/
+
 cd /vagrant/www
+
 php /usr/local/bin/composer install
-mkdir -p /vagrant/www/lib && cd /vagrant/www/lib && ln -s /vagrant/www/vendor/cakephp/cakephp/lib/Cake .
+
+mkdir -p /vagrant/www/lib
+
+cd /vagrant/www/lib
+
+ln -s /vagrant/www/vendor/cakephp/cakephp/lib/Cake /vagrant/www/lib
+
 cd /vagrant/www
+
 yes | php /vagrant/www/lib/Cake/Console/cake.php bake project cake-app
 
-cp -rf /vagrant/www/app/Plugin/* /vagrant/www/cake-app/Plugin
+cp -rfa /vagrant/www/app/Plugin/* /vagrant/www/cake-app/Plugin
 
 echo "----------Boostrap 3-----------"
-cp -rf /vagrant/www/vendor/components/jquery/jquery.min.js /vagrant/www/cake-app/webroot/js/
-cp -rf /vagrant/www/vendor/components/bootstrap/css/bootstrap*.min.css /vagrant/www/cake-app/webroot/css
-cp -rf /vagrant/www/vendor/components/bootstrap/js/* /vagrant/www/cake-app/webroot/js
+cp -rfa /vagrant/www/vendor/components/jquery/jquery.min.js /vagrant/www/cake-app/webroot/js/
+cp -rfa /vagrant/www/vendor/components/bootstrap/css/bootstrap*.min.css /vagrant/www/cake-app/webroot/css
+cp -rfa /vagrant/www/vendor/components/bootstrap/js/* /vagrant/www/cake-app/webroot/js
 cp -rfa /vagrant/www/vendor/components/bootstrap/fonts /vagrant/www/cake-app/webroot/fonts
 
 touch /vagrant/www/cake-app/webroot/css/style.css
 
-cp -rf /vagrant/cake/Config/*.php /vagrant/www/cake-app/Config/
-cp -rf /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/Controller/
-cp -rf /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/View/Layouts/
+cp -rfa /vagrant/cake/Config/*.php /vagrant/www/cake-app/Config/
+cp -rfa /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/Controller/
+cp -rfa /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/View/Layouts/
 
-chmod 777 /vagrant/www/cake-app/tmp/
+chmod 777 /vagrant/www/cake-app/tmp
 
 echo "-------------------------------"
 echo "install nginx"
 echo "-------------------------------"
 sudo yum -y install nginx
 
-cp -rf /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.org
-cp -rf /vagrant/nginx/nginx-*.conf /etc/nginx/conf.d/
-cp -rf /vagrant/nginx/nginx.conf /etc/nginx/
+cp -rfa /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.org
+cp -rfa /vagrant/nginx/nginx-*.conf /etc/nginx/conf.d/
+cp -rfa /vagrant/nginx/nginx.conf /etc/nginx/
 service nginx start
 chkconfig nginx on
 
