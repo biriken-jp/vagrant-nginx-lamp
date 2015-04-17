@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+echo "-------------------------------"
+echo "iptables stop"
+echo "-------------------------------"
+chkconfig iptables off
+service iptables stop
 
 echo "-------------------------------"
 echo "system update"
@@ -104,7 +109,7 @@ cp -rfa /vagrant/cake/Config/*.php /vagrant/www/cake-app/Config/
 cp -rfa /vagrant/cake/Contoroller/AppController.php /vagrant/www/cake-app/Controller/
 cp -rfa /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/View/Layouts/
 
-chmod 777 /vagrant/www/cake-app/tmp
+chmod 777 -R /vagrant/www/cake-app/tmp
 
 echo "-------------------------------"
 echo "install nginx"
