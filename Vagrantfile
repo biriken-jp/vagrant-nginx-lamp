@@ -9,9 +9,17 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: "192.168.33.10"
   config.vm.hostname = "local.dev"
 
-  config.vm.synced_folder "./www/public", "/vagrant/www/public", owner: 'vagrant', group: 'nginx',mount_options: ['dmode=777','fmode=755']
-  config.vm.synced_folder "./www/cake-app", "/vagrant/www/cake-app", owner: 'vagrant', group: 'nginx', mount_options: ['dmode=777','fmode=755']
-  config.vm.synced_folder "./www/cake-app/tmp", "/vagrant/www/cake-app/tmp", owner: 'vagrant', group: 'nginx', mount_options: ['dmode=777','fmode=777']
-
   config.vm.provision :shell, :path => "./bootstrap.sh"
+
+  if  Dir.exist?("./www/public") then
+    config.vm.synced_folder "./www/public", "/vagrant/www/public", owner: 'vagrant', group: 'nginx',mount_options: ['dmode=777','fmode=755']
+  end
+
+  if  Dir.exist?("./www/cake-app") then
+    config.vm.synced_folder "./www/cake-app", "/vagrant/www/cake-app", owner: 'vagrant', group: 'nginx', mount_options: ['dmode=777','fmode=755']
+  end
+
+  if  Dir.exist?("./www/cake-app/tmp") then
+    config.vm.synced_folder "./www/cake-app/tmp", "/vagrant/www/cake-app/tmp", owner: 'vagrant', group: 'nginx', mount_options: ['dmode=777','fmode=777']
+  end
 end

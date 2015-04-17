@@ -111,6 +111,12 @@ cp -rfa /vagrant/cake/Layouts/default.ctp /vagrant/www/cake-app/View/Layouts/
 
 chmod 777 -R /vagrant/www/cake-app/tmp
 
+
+echo "-------------------------------"
+echo "www/publicの配置"
+echo "-------------------------------"
+cp -rfa /vagrant/php/public/ /vagrant/www/public/
+
 echo "-------------------------------"
 echo "install nginx"
 echo "-------------------------------"
