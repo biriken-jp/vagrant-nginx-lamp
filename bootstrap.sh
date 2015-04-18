@@ -38,8 +38,8 @@ echo "install php"
 echo "-------------------------------"
 yum -y install --enablerepo=remi --enablerepo=remi-php55 php php-opcache php-devel php-mbstring php-mcrypt php-mysqlnd php-phpunit-PHPUnit php-pecl-xdebug
 
-cp /etc/php.ini /etc/php.ini.org
-cp /vagrant/php/php.ini /etc/php.ini
+cp -rfa /etc/php.ini /etc/php.ini.org
+cp -rfa /vagrant/php/php.ini /etc/php.ini
 
 chmod 777 /var/lib/php/session
 
@@ -53,8 +53,8 @@ chkconfig mysqld on
 
 mysqladmin -u root password root
 
-cp /etc/my.cnf /etc/my.cnf.org
-cp /vagrant/mysql/my.cnf /etc/my.cnf
+cp -rfa /etc/my.cnf /etc/my.cnf.org
+cp -rfa /vagrant/mysql/my.cnf /etc/my.cnf
 
 service mysqld restart
 echo "-------------------------------"
@@ -62,7 +62,7 @@ echo "install php-fpm"
 echo "-------------------------------"
 yum -y --enablerepo=remi-php55,remi install php-fpm
 cp /php-fpm.d/www.conf /php-fpm.d/www.conf.org
-cp /etc/vagrant/php/www.conf /php-fpm.d/www.conf
+cp /vagrant/php/www.conf /php-fpm.d/www.conf
 
 service php-fpm start
 chkconfig php-fpm on
