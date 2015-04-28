@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: "192.168.33.10"
   config.vm.hostname = "local.dev"
 
+  Encoding.default_external = 'UTF-8'
   config.vm.provision :shell, :path => "./bootstrap.sh"
 
   if  Dir.exist?("./www/public") then
