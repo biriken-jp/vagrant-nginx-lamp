@@ -55,6 +55,7 @@ mysqladmin -u root password root
 
 cp -rfa /etc/my.cnf /etc/my.cnf.org
 cp -rfa /vagrant/mysql/my.cnf /etc/my.cnf
+chmod 644 /etc/my.cnf
 
 service mysqld restart
 echo "-------------------------------"
